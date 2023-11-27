@@ -15,7 +15,6 @@ public class FirstController implements AllPath{
 	
 	public FirstController(ItemsService itemsService) {
 		this.itemsService = itemsService;
-		System.out.println(this.itemsService); 
 	}
 	
 
