@@ -14,7 +14,7 @@ public class ItmesDTO {
 	private int quality;
 	private int cooltime;
 	private String goldaccessories;
-	
+	public ItmesDTO() {}
 	public ItmesDTO(int kind, String image, int id, String kr_name, String en_name, String kr_line,
 			String en_line, String unlock, String effect, int quality, int cooltime, String goldaccessories) {
 		this.kind = kind;

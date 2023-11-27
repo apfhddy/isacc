@@ -1,11 +1,14 @@
 package a.firstController;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import a.controllerPath.AllPath;
+import item_kinds.Item_KindsDTO;
 import item_kinds.Item_KindsService;
 import items.ItemsService;
 
@@ -25,7 +28,11 @@ public class FirstController implements AllPath{
 	public String home(HttpServletRequest request) {
 		String key = request.getParameter("key");
 		boolean hiddenPath = key != null && key.equals("admin");
-		if(hiddenPath) return hidden;
+		if(hiddenPath) {
+			List<Item_KindsDTO> kindList = item_KindsService.getAllKind();
+			request.setAttribute("kindList", kindList);
+			return hidden;
+		}
 		else return home; 
 	}
 	
