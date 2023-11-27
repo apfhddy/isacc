@@ -20,9 +20,10 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean> -->
-	
+	<context:annotation-config/>
 	<beans:bean class="a.firstController.FirstController">
 		<beans:constructor-arg ref="itemsService"/>
+		<beans:constructor-arg ref="item_KindsService"/>
 	</beans:bean>
 
 	
