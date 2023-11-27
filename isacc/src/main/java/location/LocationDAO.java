@@ -1,5 +1,10 @@
 package location;
 
-public class LocationDAO {
+import org.apache.ibatis.session.SqlSession;
 
+public class LocationDAO {
+	private SqlSession sqlSession;
+	public LocationDAO(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
 }
