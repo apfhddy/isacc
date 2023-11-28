@@ -11,6 +11,6 @@ public class LocationsDAO {
 	}
 	
 	public List<LocationsDTO> getAllLocations(){
-		return sqlSession.selectList("");
+		return sqlSession.selectList("locations.getAllLocations");
 	}
 }

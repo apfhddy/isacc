@@ -34,9 +34,10 @@ public class FirstController implements AllPath{
 		boolean hiddenPath = key != null && key.equals("admin");
 		if(hiddenPath) {
 			List<Item_KindsDTO> kindList = item_KindsService.getAllKind();
-		//	List<LocationsDTO> locationsList = 
-			
+			List<LocationsDTO> locationsList = locationService.getAllLocations(); 
+			System.out.println(locationsList.size());
 			request.setAttribute("kindList", kindList);
+			request.setAttribute("locationsList", locationsList);
 			return hidden;
 		}
 		else return home; 
