@@ -1,6 +1,6 @@
 package items;
 
-public class ItmesDTO {
+public class ItemsDTO {
 	private int item_no;
 	private int kind;
 	private String image;
@@ -14,8 +14,8 @@ public class ItmesDTO {
 	private int quality;
 	private int cooltime;
 	private String goldaccessories;
-	public ItmesDTO() {}
-	public ItmesDTO(int kind, String image, int id, String kr_name, String en_name, String kr_line,
+	public ItemsDTO() {}
+	public ItemsDTO(int kind, String image, int id, String kr_name, String en_name, String kr_line,
 			String en_line, String unlock, String effect, int quality, int cooltime, String goldaccessories) {
 		this.kind = kind;
 		this.image = image;
@@ -30,7 +30,16 @@ public class ItmesDTO {
 		this.cooltime = cooltime;
 		this.goldaccessories = goldaccessories;
 	}
+	
+	
 
+	@Override
+	public String toString() {
+		return "ItemsDTO [item_no=" + item_no + ", kind=" + kind + ", image=" + image + ", id=" + id + ", kr_name="
+				+ kr_name + ", en_name=" + en_name + ", kr_line=" + kr_line + ", en_line=" + en_line + ", unlock="
+				+ unlock + ", effect=" + effect + ", quality=" + quality + ", cooltime=" + cooltime
+				+ ", goldaccessories=" + goldaccessories + "]";
+	}
 	public int getItem_no() {
 		return item_no;
 	}

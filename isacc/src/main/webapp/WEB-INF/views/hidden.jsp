@@ -59,23 +59,23 @@
 				</tr>
 				<tr>
 					<td>아이디*</td>
-					<td><input name = "id" type="number"></td>
+					<td><input name = "id" type="number" value="9"></td>
 				</tr>
 				<tr>
 					<td>한글 이름*</td>
-					<td><input name = "kr_name" type = "text"></td>
+					<td><input name = "kr_name" type = "text" value="krName"></td>
 				</tr>
 				<tr>
 					<td>영어 이름*</td>
-					<td><input name = "en_name" type = "text"></td>
+					<td><input name = "en_name" type = "text" value="enName"></td>
 				</tr>
 				<tr>
 					<td>한글 습득 대사*</td>
-					<td><input name = "kr_line" type = "text"></td>
+					<td><input name = "kr_line" type = "text" value="krLine"></td>
 				</tr>
 				<tr>
 					<td>영어 습득 대사*</td>
-					<td><input name = "en_line" type = "text"></td>
+					<td><input name = "en_line" type = "text" value="enLine"></td>
 				</tr>
 				<tr hidden="">
 					<td>등급</td>
@@ -95,11 +95,11 @@
 				</tr>
 				<tr>
 					<td>언락 조건</td>
-					<td><textarea rows="5" cols="40"></textarea></td>
+					<td><textarea name = "unlock" rows="5" cols="40"></textarea></td>
 				</tr>
 				<tr>
 					<td>효과*</td>
-					<td><textarea name = "effect" rows="5" cols="40"></textarea></td>
+					<td><textarea name = "effect" rows="5" cols="40" >a</textarea></td>
 				</tr>
 				<tr hidden="">
 					<td>황금 장신구<br>효과</td>

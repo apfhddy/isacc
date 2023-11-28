@@ -26,6 +26,9 @@
 		<beans:constructor-arg ref="item_KindsService"/>
 		<beans:constructor-arg ref="locationsService"/>
 	</beans:bean>
+	<beans:bean class="items.ItemsController">
+		<beans:constructor-arg ref="itemsService"/>
+	</beans:bean>
 
 	
 	
