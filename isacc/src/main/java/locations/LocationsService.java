@@ -1,4 +1,4 @@
-package location;
+package locations;
 
 public class LocationsService {
 	private LocationsDAO locationDAO;

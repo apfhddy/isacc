@@ -1,4 +1,4 @@
-package location;
+package locations;
 
 public class LocationsDTO {
 	private int location_no;

@@ -24,7 +24,7 @@
 	<beans:bean class="a.firstController.FirstController">
 		<beans:constructor-arg ref="itemsService"/>
 		<beans:constructor-arg ref="item_KindsService"/>
-		<beans:constructor-arg ref="locationService"/>
+		<beans:constructor-arg ref="locationsService"/>
 	</beans:bean>
 
 	

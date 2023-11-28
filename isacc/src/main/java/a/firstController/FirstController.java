@@ -11,8 +11,8 @@ import a.controllerPath.AllPath;
 import item_kinds.Item_KindsDTO;
 import item_kinds.Item_KindsService;
 import items.ItemsService;
-import location.LocationsDTO;
-import location.LocationsService;
+import locations.LocationsDTO;
+import locations.LocationsService;
 
 
 @Controller
