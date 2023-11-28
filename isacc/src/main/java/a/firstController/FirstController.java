@@ -11,16 +11,18 @@ import a.controllerPath.AllPath;
 import item_kinds.Item_KindsDTO;
 import item_kinds.Item_KindsService;
 import items.ItemsService;
+import location.LocationService;
 
 
 @Controller
 public class FirstController implements AllPath{
 	private ItemsService itemsService;
 	private Item_KindsService item_KindsService;
-	
-	public FirstController(ItemsService itemsService,Item_KindsService item_KindsService) {
+	private LocationService locationService;
+	public FirstController(ItemsService itemsService,Item_KindsService item_KindsService,LocationService locationService) {
 		this.itemsService = itemsService; 
 		this.item_KindsService = item_KindsService;
+		this.locationService = locationService;
 	}
 	
 

@@ -9,12 +9,16 @@
 		font-size: 13px;
 		font-weight: bold;
 	}
+	img {
+	  image-rendering: pixelated;
+	}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	히든페이지
+	히든페이지<img width="33" style="" src="resources/roomImg/babyStore.png">
+	히든페이지<img width="33" style="" src="resources/roomImg/woodChest.png">
 	<div align="center">
 		<form>
 			<table border="1" >
@@ -68,7 +72,7 @@
 				</tr>
 				<tr hidden="">
 					<td>등장 장소</td>
-					<td><input name = "cooltime" type="number"></td>
+					<td><input name = "locations" type="number"></td>
 				</tr>
 				<tr>
 					<td>언락 조건</td>
@@ -87,7 +91,9 @@
 		</form>
 	</div>
 	<script type="text/javascript">
+		inputDataChange(document.querySelector("form"))
 		function inputDataChange(t) {
+			console.log(t.kind)
 			let choice = +t.kind.value;
 			const qualityTr = t.quality.parentElement.parentElement;
 			const cooltimeTr = t.cooltime.parentElement.parentElement;
