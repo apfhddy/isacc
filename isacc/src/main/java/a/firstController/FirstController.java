@@ -35,7 +35,6 @@ public class FirstController implements AllPath{
 		if(hiddenPath) {
 			List<Item_KindsDTO> kindList = item_KindsService.getAllKind();
 			List<LocationsDTO> locationsList = locationService.getAllLocations(); 
-			System.out.println(locationsList.size());
 			request.setAttribute("kindList", kindList);
 			request.setAttribute("locationsList", locationsList);
 			return hidden;

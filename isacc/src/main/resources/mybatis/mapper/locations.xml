@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="locations">
 	<!-- SQL문들을 작성하는 파일 -->
 	<select id="getAllLocations" resultType="locations.LocationsDTO">
-		select * from locations
+		select * from locations l order by l.location_no
 	</select>
 </mapper>
 
