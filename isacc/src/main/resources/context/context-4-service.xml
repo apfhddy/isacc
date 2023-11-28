@@ -14,7 +14,7 @@
 	<bean id = "item_KindsService" class = "item_kinds.Item_KindsService">
 		<constructor-arg ref="item_KindsDAO"/>
 	</bean>
-	<bean id = "locationService" class = "location.LocationService">
+	<bean id = "locationService" class = "location.LocationsService">
 		<constructor-arg ref="locationDAO"/>
 	</bean>
 	

@@ -1,13 +1,13 @@
 package location;
 
-public class LocationDTO {
+public class LocationsDTO {
 	private int location_no;
 	private String name;
 	private String image;
 	
-	public LocationDTO() {}
+	public LocationsDTO() {}
 	
-	public LocationDTO(int location_no, String name,String image) {
+	public LocationsDTO(int location_no, String name,String image) {
 		this.location_no = location_no;
 		this.name = name;
 		this.image = image;

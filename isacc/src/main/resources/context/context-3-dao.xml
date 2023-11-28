@@ -11,7 +11,7 @@
 	<bean id = "item_KindsDAO" class="item_kinds.Item_KindsDAO">
 		<constructor-arg ref="sqlSession"/>
 	</bean>
-	<bean id = "locationDAO" class="location.LocationDAO">
+	<bean id = "locationDAO" class="location.LocationsDAO">
 		<constructor-arg ref="sqlSession"/>
 	</bean>
 		
