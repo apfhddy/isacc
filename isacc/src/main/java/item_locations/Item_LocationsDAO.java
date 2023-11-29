@@ -9,7 +9,7 @@ public class Item_LocationsDAO {
 		this.sqlSession = sqlSession;
 	}
 	
-	public int insertItem_Locations(Item_LocationsDTO dto) {
-		return sqlSession.insert("",dto);
+	public  int insertItem_Locations(Item_LocationsDTO dto) {
+		return sqlSession.insert("item_locations.insertItem_Locations",dto);
 	}
 }

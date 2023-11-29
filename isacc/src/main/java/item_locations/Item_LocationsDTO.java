@@ -7,9 +7,7 @@ public class Item_LocationsDTO {
 	
 	public Item_LocationsDTO() {}
 
-	public Item_LocationsDTO(int i_l_no, int item_no, int location_no) {
-		super();
-		this.i_l_no = i_l_no;
+	public Item_LocationsDTO(int item_no, int location_no) {
 		this.item_no = item_no;
 		this.location_no = location_no;
 	}

@@ -6,6 +6,7 @@ import a.controllerPath.StaticMethod;
 import item_cooltime.Item_CoolTimeDAO;
 import item_cooltime.Item_CoolTimeDTO;
 import item_locations.Item_LocationsDAO;
+import item_locations.Item_LocationsDTO;
 
 public class ItemsService {
 	private ItemsDAO itemsDAO;
@@ -58,8 +59,8 @@ public class ItemsService {
 		if(kind_no != 3) {
 			String[] locations = req.getParameterValues("locations");
 			if(locations != null) {
-				for(String locatoin : locations) {
-					Item_LocationsDAO.insertItem_Locations(new );
+				for(String location : locations) {
+					item_LocationsDAO.insertItem_Locations(new Item_LocationsDTO(item_no, Integer.parseInt(location)));
 				}
 			}
 		}
