@@ -91,19 +91,19 @@
 				</tr>
 				<tr hidden="">
 					<td>쿨타임*</td>
-					<td><input name = "cooltime" type="number"></td>
+					<td><input name = "cooltime" type="number" max="20"></td>
 				</tr>
 				<tr>
 					<td>언락 조건</td>
-					<td><textarea name = "unlock" rows="5" cols="40"></textarea></td>
+					<td><textarea name = "unlock" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 				<tr>
 					<td>효과*</td>
-					<td><textarea name = "effect" rows="5" cols="40" >a</textarea></td>
+					<td><textarea name = "effect" spellcheck="false" rows="5" cols="40" >a</textarea></td>
 				</tr>
 				<tr hidden="">
 					<td>황금 장신구<br>효과</td>
-					<td><textarea name="goldaccessories" rows="5" cols="40"></textarea></td>
+					<td><textarea name="goldaccessories" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="checkSubmit(this.form)">

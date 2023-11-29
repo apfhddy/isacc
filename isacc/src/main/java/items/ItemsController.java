@@ -27,6 +27,10 @@ public class ItemsController implements AllPath{
 		String kr_line = req.getParameter("kr_line");
 		String en_line = req.getParameter("en_line");
 		String unlock = req.getParameter("unlock");
+		String effect = req.getParameter("effect");
+		int quality = Integer.parseInt(req.getParameter("quality"));
+		System.out.println(req.getParameter("cooltime"));
+		
 		
 		item.setKind(kind);
 		item.setId(id);
@@ -35,6 +39,8 @@ public class ItemsController implements AllPath{
 		item.setKr_line(kr_line);
 		item.setEn_line(en_line);
 		item.setUnlock(unlock);
+		item.setEffect(effect);
+		item.setQuality(quality);
 		System.out.println(item.toString());
 		
 		return null;
