@@ -16,7 +16,6 @@ public class ItemsService {
 	}
 	
 	public int insertItem(HttpServletRequest req) {
-		ItemsDTO item = new ItemsDTO();
 		int kind_no = Integer.parseInt(req.getParameter("kind"));
 		String image = null;
 		int id = Integer.parseInt(req.getParameter("id"));
@@ -27,6 +26,8 @@ public class ItemsService {
 		String unlock = req.getParameter("unlock");
 		String effect = req.getParameter("effect");
 		int quality = Integer.parseInt(req.getParameter("quality"));
+		int i_c_no = 0;
+		String goldaccessories = req.getParameter("goldaccessories");
 		
 		if(kind_no == 2) {
 			int num = StaticMethod.parameterNullCheckToInt0(req.getParameter("num"));
@@ -36,21 +37,16 @@ public class ItemsService {
 				secondOrspaces = 0;
 			}
 			Item_CoolTimeDTO item_CoolTimeDTO = new Item_CoolTimeDTO(num, secondOrspaces, infinityOroneoff);
-			int i_c_no = item_CoolTimeDAO.getItem_CoolTime_NO(item_CoolTimeDTO);
-			System.out.println(i_c_no);
+			i_c_no = item_CoolTimeDAO.getItem_CoolTime_NO(item_CoolTimeDTO);
+			
+			if(i_c_no == 0) {
+				i_c_no = item_CoolTimeDAO.getNextNo();
+				item_CoolTimeDTO.setI_c_no(i_c_no);
+				item_CoolTimeDAO.insertCoolTime(item_CoolTimeDTO);
+			}
 		}
 		
-		
-		item.setKind_no(kind_no);
-		item.setId(id);
-		item.setKr_name(kr_name);
-		item.setEn_name(en_name);
-		item.setKr_line(kr_line);
-		item.setEn_line(en_line);
-		item.setUnlock(unlock);
-		item.setEffect(effect);
-		item.setQuality(quality);
-		System.out.println(item.toString());
-		return 0;
+		ItemsDTO item = new ItemsDTO(kind_no, image, id, kr_name, en_name, kr_line, en_line, unlock, effect, quality, i_c_no, goldaccessories);
+		return itemsDAO.insertItems(item);
 	}
 }

@@ -8,4 +8,9 @@ public class ItemsDAO {
 	public ItemsDAO(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	public int insertItems(ItemsDTO dto) {
+		System.out.println(dto.toString());
+		return sqlSession.insert("items.insertItems",dto);
+	}
 }

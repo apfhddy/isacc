@@ -16,6 +16,7 @@
 		<mapper resource="mybatis/mapper/item_kinds.xml"/>
 		<mapper resource="mybatis/mapper/locations.xml"/>
 		<mapper resource="mybatis/mapper/item_cooltime.xml"/>
+		<mapper resource="mybatis/mapper/items.xml"/>
 		<!-- <mapper resource="config/mybatis/mapper/board_select.xml" />
 		<mapper resource="config/mybatis/mapper/board_insert.xml" />
 		<mapper resource="config/mybatis/mapper/board_update.xml" />

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="items">
+	<!-- SQL문들을 작성하는 파일 -->
+	<insert id="insertItems" parameterType="items.ItemsDTO">
+		insert into items values(items_seq.nextval,#{kind_no},#{image},#{id},#{kr_name},#{en_name},
+		#{kr_line},#{en_line},#{unlock},#{effect},#{quality},#{i_c_no},#{goldaccessories})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

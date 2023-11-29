@@ -7,6 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getItem_CoolTime_NO" resultType="int" parameterType="item_cooltime.Item_CoolTimeDTO">
 		select i_c_no from item_cooltime where  num = #{num} and secondOrspaces = #{secondOrspaces} and infinityOroneoff = #{infinityOroneoff}
 	</select>
+	
+	<select id="getNextNo" resultType="int">
+		select item_cooltime_seq.nextval from dual
+	</select>
+	<insert id="insertCoolTime" parameterType="item_cooltime.Item_CoolTimeDTO">
+		insert into item_cooltime values(#{i_c_no},#{num},#{secondOrspaces},#{infinityOroneoff})
+	</insert>
 </mapper>
 
 

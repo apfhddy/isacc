@@ -1,7 +1,5 @@
 package items;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +19,6 @@ public class ItemsController implements AllPath{
 		itemsService.insertItem(req);
 		
 		
-		return null;
+		return hidden;
 	}
 }
