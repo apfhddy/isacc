@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div align="center">
-		<form action="${pageContext.request.contextPath }/insertItem" method="post">
+		<form action="${pageContext.request.contextPath }/insertItem" method="post" enctype="multipart/form-data">
 			<div id = "locations" style="display: none; margin-left: 20%; position: absolute; border: 1px solid; z-index: 1; background-color: white">
 				등장장소 설정
 				<table border="1">
