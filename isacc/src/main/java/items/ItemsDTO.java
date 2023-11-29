@@ -15,8 +15,9 @@ public class ItemsDTO {
 	private int i_c_no;
 	private String goldaccessories;
 	public ItemsDTO() {}
-	public ItemsDTO(int kind_no, String image, int id, String kr_name, String en_name, String kr_line,
+	public ItemsDTO(int item_no,int kind_no, String image, int id, String kr_name, String en_name, String kr_line,
 			String en_line, String unlock, String effect, int quality, int i_c_no, String goldaccessories) {
+		this.item_no = item_no;
 		this.kind_no = kind_no;
 		this.image = image;
 		this.id = id;

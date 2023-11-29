@@ -12,4 +12,8 @@ public class ItemsDAO {
 	public int insertItems(ItemsDTO dto) {
 		return sqlSession.insert("items.insertItems",dto);
 	}
+	
+	public int getNextNo() {
+		return sqlSession.selectOne("items.getNextNo");
+	}
 }
