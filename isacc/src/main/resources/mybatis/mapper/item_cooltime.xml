@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="item_cooltime">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getItem_CoolTime_NO" resultType="int" parameterType="item_cooltime.Item_CoolTimeDTO">
+		select i_c_no from item_cooltime where  num = #{num} and secondOrspaces = #{secondOrspaces} and infinityOroneoff = #{infinityOroneoff}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

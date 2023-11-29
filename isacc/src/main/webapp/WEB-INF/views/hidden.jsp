@@ -39,7 +39,7 @@
 			<table border="1" >
 				<tr>
 					<td>종류</td>
-					<td>
+					<td colspan="2">
 						<select name = "kind" onchange="inputDataChange(this.form)">
 						<c:forEach var="kind" items="${kindList }">
 							<option value="${kind.kind_no }">
@@ -55,31 +55,31 @@
 				</tr>
 				<tr>
 					<td>이미지*</td>
-					<td><input name = "image" type="file"></td>
+					<td colspan="2"><input name = "image" type="file"></td>
 				</tr>
 				<tr>
 					<td>아이디*</td>
-					<td><input name = "id" type="number" value="9"></td>
+					<td colspan="2"><input name = "id" type="number" value="9"></td>
 				</tr>
 				<tr>
 					<td>한글 이름*</td>
-					<td><input name = "kr_name" type = "text" value="krName"></td>
+					<td colspan="2"><input name = "kr_name" type = "text" value="krName"></td>
 				</tr>
 				<tr>
 					<td>영어 이름*</td>
-					<td><input name = "en_name" type = "text" value="enName"></td>
+					<td colspan="2"><input name = "en_name" type = "text" value="enName"></td>
 				</tr>
 				<tr>
 					<td>한글 습득 대사*</td>
-					<td><input name = "kr_line" type = "text" value="krLine"></td>
+					<td colspan="2"><input name = "kr_line" type = "text" value="krLine"></td>
 				</tr>
 				<tr>
 					<td>영어 습득 대사*</td>
-					<td><input name = "en_line" type = "text" value="enLine"></td>
+					<td colspan="2"><input name = "en_line" type = "text" value="enLine"></td>
 				</tr>
 				<tr hidden="">
 					<td>등급</td>
-					<td>
+					<td colspan="2">
 						<select name = "quality">
 							<option value = "0">0</option>
 							<option value = "1">1</option>
@@ -91,19 +91,20 @@
 				</tr>
 				<tr hidden="">
 					<td>쿨타임*</td>
-					<td><input name = "cooltime" type="number" max="20"></td>
+					<td><input name = "num" type="number" max = "30" min="0"><input name = "scdOspc" type = "radio" value = "1" >초<input name = "scdOspc" type = "radio" value = "2">칸</td>
+					<td><input name = "iftOoo" type = "radio" value = "0">없음<input name = "iftOoo" type = "radio" value = "1">무제한<input name = "iftOoo" type = "radio" value = "2">일회성</td>
 				</tr>
 				<tr>
 					<td>언락 조건</td>
-					<td><textarea name = "unlock" spellcheck="false" rows="5" cols="40"></textarea></td>
+					<td colspan="2"><textarea name = "unlock" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 				<tr>
-					<td>효과*</td>
-					<td><textarea name = "effect" spellcheck="false" rows="5" cols="40" >a</textarea></td>
+					<td>효과*</td>	
+					<td colspan="2"><textarea name = "effect" spellcheck="false" rows="5" cols="40" >a</textarea></td>
 				</tr>
 				<tr hidden="">
 					<td>황금 장신구<br>효과</td>
-					<td><textarea name="goldaccessories" spellcheck="false" rows="5" cols="40"></textarea></td>
+					<td colspan="2"><textarea name="goldaccessories" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="checkSubmit(this.form)">
@@ -114,7 +115,7 @@
 		function inputDataChange(t) {
 			let choice = +t.kind.value;
 			const qualityTr = t.quality.parentElement.parentElement;
-			const cooltimeTr = t.cooltime.parentElement.parentElement;
+			const cooltimeTr = t.num.parentElement.parentElement;
 			const goldaccessoriesTr = t.goldaccessories.parentElement.parentElement;
 			const locationsDiv = locations;
 			

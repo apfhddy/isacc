@@ -10,6 +10,7 @@
 	</bean> -->
 	<bean id = "itemsService" class = "items.ItemsService">
 		<constructor-arg ref="itemsDAO"/>
+		<constructor-arg ref="item_CoolTimeDAO"/>
 	</bean>
 	<bean id = "item_KindsService" class = "item_kinds.Item_KindsService">
 		<constructor-arg ref="item_KindsDAO"/>

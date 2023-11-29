@@ -2,7 +2,7 @@ package items;
 
 public class ItemsDTO {
 	private int item_no;
-	private int kind;
+	private int kind_no;
 	private String image;
 	private int id;
 	private String kr_name;
@@ -15,9 +15,9 @@ public class ItemsDTO {
 	private int i_c_no;
 	private String goldaccessories;
 	public ItemsDTO() {}
-	public ItemsDTO(int kind, String image, int id, String kr_name, String en_name, String kr_line,
+	public ItemsDTO(int kind_no, String image, int id, String kr_name, String en_name, String kr_line,
 			String en_line, String unlock, String effect, int quality, int i_c_no, String goldaccessories) {
-		this.kind = kind;
+		this.kind_no = kind_no;
 		this.image = image;
 		this.id = id;
 		this.kr_name = kr_name;
@@ -30,17 +30,28 @@ public class ItemsDTO {
 		this.i_c_no = i_c_no;
 		this.goldaccessories = goldaccessories;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "ItemsDTO [item_no=" + item_no + ", kind_no=" + kind_no + ", image=" + image + ", id=" + id
+				+ ", kr_name=" + kr_name + ", en_name=" + en_name + ", kr_line=" + kr_line + ", en_line=" + en_line
+				+ ", unlock=" + unlock + ", effect=" + effect + ", quality=" + quality + ", i_c_no=" + i_c_no
+				+ ", goldaccessories=" + goldaccessories + "]";
+	}
 	public int getItem_no() {
 		return item_no;
 	}
 	public void setItem_no(int item_no) {
 		this.item_no = item_no;
 	}
-	public int getKind() {
-		return kind;
+	
+	public int getKind_no() {
+		return kind_no;
 	}
-	public void setKind(int kind) {
-		this.kind = kind;
+	public void setKind_no(int kind_no) {
+		this.kind_no = kind_no;
 	}
 	public String getImage() {
 		return image;

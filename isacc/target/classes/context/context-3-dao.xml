@@ -14,5 +14,8 @@
 	<bean id = "locationsDAO" class="locations.LocationsDAO">
 		<constructor-arg ref="sqlSession"/>
 	</bean>
+	<bean id = "item_CoolTimeDAO" class="item_cooltime.Item_CoolTimeDAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
 		
 </beans>
