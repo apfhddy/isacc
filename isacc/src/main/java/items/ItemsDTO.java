@@ -12,11 +12,11 @@ public class ItemsDTO {
 	private String unlock;
 	private String effect;
 	private int quality;
-	private int cooltime;
+	private int i_c_no;
 	private String goldaccessories;
 	public ItemsDTO() {}
 	public ItemsDTO(int kind, String image, int id, String kr_name, String en_name, String kr_line,
-			String en_line, String unlock, String effect, int quality, int cooltime, String goldaccessories) {
+			String en_line, String unlock, String effect, int quality, int i_c_no, String goldaccessories) {
 		this.kind = kind;
 		this.image = image;
 		this.id = id;
@@ -27,123 +27,92 @@ public class ItemsDTO {
 		this.unlock = unlock;
 		this.effect = effect;
 		this.quality = quality;
-		this.cooltime = cooltime;
+		this.i_c_no = i_c_no;
 		this.goldaccessories = goldaccessories;
-	}
-	
-	
-
-	@Override
-	public String toString() {
-		return "ItemsDTO [item_no=" + item_no + ", kind=" + kind + ", image=" + image + ", id=" + id + ", kr_name="
-				+ kr_name + ", en_name=" + en_name + ", kr_line=" + kr_line + ", en_line=" + en_line + ", unlock="
-				+ unlock + ", effect=" + effect + ", quality=" + quality + ", cooltime=" + cooltime
-				+ ", goldaccessories=" + goldaccessories + "]";
 	}
 	public int getItem_no() {
 		return item_no;
 	}
-
 	public void setItem_no(int item_no) {
 		this.item_no = item_no;
 	}
-
 	public int getKind() {
 		return kind;
 	}
-
 	public void setKind(int kind) {
 		this.kind = kind;
 	}
-
 	public String getImage() {
 		return image;
 	}
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getKr_name() {
 		return kr_name;
 	}
-
 	public void setKr_name(String kr_name) {
 		this.kr_name = kr_name;
 	}
-
 	public String getEn_name() {
 		return en_name;
 	}
-
 	public void setEn_name(String en_name) {
 		this.en_name = en_name;
 	}
-
 	public String getKr_line() {
 		return kr_line;
 	}
-
 	public void setKr_line(String kr_line) {
 		this.kr_line = kr_line;
 	}
-
 	public String getEn_line() {
 		return en_line;
 	}
-
 	public void setEn_line(String en_line) {
 		this.en_line = en_line;
 	}
-
 	public String getUnlock() {
 		return unlock;
 	}
-
 	public void setUnlock(String unlock) {
 		this.unlock = unlock;
 	}
-
 	public String getEffect() {
 		return effect;
 	}
-
 	public void setEffect(String effect) {
 		this.effect = effect;
 	}
-
 	public int getQuality() {
 		return quality;
 	}
-
 	public void setQuality(int quality) {
 		this.quality = quality;
 	}
-
-	public int getCooltime() {
-		return cooltime;
+	public int getI_c_no() {
+		return i_c_no;
 	}
-
-	public void setCooltime(int cooltime) {
-		this.cooltime = cooltime;
+	public void setI_c_no(int i_c_no) {
+		this.i_c_no = i_c_no;
 	}
-
 	public String getGoldaccessories() {
 		return goldaccessories;
 	}
-
 	public void setGoldaccessories(String goldaccessories) {
 		this.goldaccessories = goldaccessories;
 	}
 	
+	
+	
+	
+
 	
 	
 }
