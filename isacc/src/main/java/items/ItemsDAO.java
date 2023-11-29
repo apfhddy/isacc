@@ -10,7 +10,6 @@ public class ItemsDAO {
 	}
 	
 	public int insertItems(ItemsDTO dto) {
-		System.out.println(dto.toString());
 		return sqlSession.insert("items.insertItems",dto);
 	}
 }

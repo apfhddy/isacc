@@ -15,9 +15,9 @@ public class ItemsService {
 		this.item_CoolTimeDAO = item_CoolTimeDAO;
 	}
 	
-	public int insertItem(HttpServletRequest req) {
+	public int insertItem(HttpServletRequest req,String fileName) {
 		int kind_no = Integer.parseInt(req.getParameter("kind"));
-		String image = null;
+		String image = fileName;
 		int id = Integer.parseInt(req.getParameter("id"));
 		String kr_name = req.getParameter("kr_name");
 		String en_name = req.getParameter("en_name");
@@ -29,6 +29,7 @@ public class ItemsService {
 		int i_c_no = 0;
 		String goldaccessories = req.getParameter("goldaccessories");
 		
+		//액티브 쿨타임 처리
 		if(kind_no == 2) {
 			int num = StaticMethod.parameterNullCheckToInt0(req.getParameter("num"));
 			int secondOrspaces = StaticMethod.parameterNullCheckToInt0(req.getParameter("scdOspc"));
@@ -45,6 +46,15 @@ public class ItemsService {
 				item_CoolTimeDAO.insertCoolTime(item_CoolTimeDTO);
 			}
 		}
+		//패시브 액티브 등장장소 설정 처리
+		if(kind_no != 3) {
+			String[] locations = req.getParameterValues("locations");
+			if(locations != null) {
+				
+			}
+		}
+		
+		
 		
 		ItemsDTO item = new ItemsDTO(kind_no, image, id, kr_name, en_name, kr_line, en_line, unlock, effect, quality, i_c_no, goldaccessories);
 		return itemsDAO.insertItems(item);
