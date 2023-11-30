@@ -1,5 +1,7 @@
 package items;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 public class ItemsDAO {
@@ -15,5 +17,9 @@ public class ItemsDAO {
 	
 	public int getNextNo() {
 		return sqlSession.selectOne("items.getNextNo");
+	}
+	
+	public List<ItemsDTO> getAllItems(){
+		return sqlSession.selectList("items.getAllItems");
 	}
 }

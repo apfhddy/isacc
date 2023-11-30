@@ -1,5 +1,10 @@
 package items;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import a.controllerPath.StaticMethod;
@@ -7,6 +12,7 @@ import item_cooltime.Item_CoolTimeDAO;
 import item_cooltime.Item_CoolTimeDTO;
 import item_locations.Item_LocationsDAO;
 import item_locations.Item_LocationsDTO;
+import locations.LocationsDTO;
 
 public class ItemsService {
 	private ItemsDAO itemsDAO;
@@ -28,11 +34,11 @@ public class ItemsService {
 		String en_name = req.getParameter("en_name");
 		String kr_line = req.getParameter("kr_line");
 		String en_line = req.getParameter("en_line");
-		String unlock = req.getParameter("unlock");
-		String effect = req.getParameter("effect");
+		String unlock = StaticMethod.textLineChange(req.getParameter("unlock"));
+		String effect = StaticMethod.textLineChange(req.getParameter("effect"));
 		int quality = Integer.parseInt(req.getParameter("quality"));
 		int i_c_no = 0;
-		String goldaccessories = req.getParameter("goldaccessories");
+		String goldaccessories = StaticMethod.textLineChange(req.getParameter("goldaccessories"));
 		
 		//액티브 쿨타임 처리
 		if(kind_no == 2) {
@@ -64,7 +70,46 @@ public class ItemsService {
 				}
 			}
 		}
-		
 		return answer;
 	}
+	
+	public List<Map<String,Object>> getAllItems(){
+		List<ItemsDTO> list = itemsDAO.getAllItems();
+		
+		List<Map<String,Object>> returnMap = new ArrayList<Map<String,Object>>();
+		for(ItemsDTO item : list) {
+			Map<String,Object> sideMap = new HashMap<String, Object>();
+			int kind = item.getKind_no();
+			int item_no = item.getItem_no();
+			sideMap.put("item_no", item_no);
+			sideMap.put("kind_no", kind);
+			sideMap.put("image", item.getImage());	
+			sideMap.put("id", item.getId());
+			sideMap.put("kr_name", item.getKr_name());
+			sideMap.put("en_name", item.getEn_name());
+			sideMap.put("kr_line", item.getKr_line());
+			sideMap.put("en_line", item.getEn_line());
+			sideMap.put("unlock", item.getUnlock());
+			sideMap.put("effect", item.getEffect());
+			sideMap.put("quality", item.getQuality());
+			if(kind != 3) {//3이 아니라면 
+				List<Map<String,Object>> locations = item_LocationsDAO.getOneLocations(item_no);
+				sideMap.put("locations", locations);
+			}
+			if(kind == 2) {
+				sideMap.put("i_c_no", item.getI_c_no());
+			}
+			if(kind == 3) {
+				sideMap.put("goldaccessories", item.getGoldaccessories());
+			}
+			returnMap.add(sideMap);
+		}
+		
+		
+		
+		
+		return returnMap;
+	}
+	
+	
 }

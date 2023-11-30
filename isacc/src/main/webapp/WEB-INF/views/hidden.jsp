@@ -59,23 +59,23 @@
 				</tr>
 				<tr>
 					<td>아이디*</td>
-					<td colspan="2"><input name = "id" type="number" value="9"></td>
+					<td colspan="2"><input name = "id" type="number"></td>
 				</tr>
 				<tr>
 					<td>한글 이름*</td>
-					<td colspan="2"><input name = "kr_name" type = "text" value="krName"></td>
+					<td colspan="2"><input name = "kr_name" type = "text" placeholder="krName"></td>
 				</tr>
 				<tr>
 					<td>영어 이름*</td>
-					<td colspan="2"><input name = "en_name" type = "text" value="enName"></td>
+					<td colspan="2"><input name = "en_name" type = "text" placeholder="enName"></td>
 				</tr>
 				<tr>
 					<td>한글 습득 대사*</td>
-					<td colspan="2"><input name = "kr_line" type = "text" value="krLine"></td>
+					<td colspan="2"><input name = "kr_line" type = "text" placeholder="krLine"></td>
 				</tr>
 				<tr>
 					<td>영어 습득 대사*</td>
-					<td colspan="2"><input name = "en_line" type = "text" value="enLine"></td>
+					<td colspan="2"><input name = "en_line" type = "text" placeholder="enLine"></td>
 				</tr>
 				<tr hidden="">
 					<td>등급</td>
@@ -100,17 +100,31 @@
 				</tr>
 				<tr>
 					<td>효과*</td>	
-					<td colspan="2"><textarea name = "effect" spellcheck="false" rows="5" cols="40" >a</textarea></td>
+					<td colspan="2"><textarea name = "effect" spellcheck="false" rows="5" cols="40" ></textarea></td>
 				</tr>
 				<tr hidden="">
 					<td>황금 장신구<br>효과</td>
 					<td colspan="2"><textarea name="goldaccessories" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 			</table>
-			<input type="button" value="저장" onclick="checkSubmit(this.form)">
+			<input type="button" value="저장" onclick="checkSubmit(this.form)"><input type = "button" value = "아이템 수정" onclick="document.location.href='${pageContext.request.contextPath}/'">
 		</form>
 	</div>
 	<script type="text/javascript">
+		let textObjects = Array.from(document.querySelectorAll("textarea"));
+		textObjects.forEach(t => {
+			t.addEventListener("keydown", function(e) {
+				if(event.keyCode===9){
+					e.preventDefault();
+					var v = this.value,s=this.selectionStart,e=this.selectionEnd;
+					this.value=v.substring(0, s)+'\t'+v.substring(e);
+					this.selectionStart=this.selectionEnd=s+1;
+					return false;
+				}	
+			})
+		})
+		
+	
 		inputDataChange(document.querySelector("form"))
 		function inputDataChange(t) {
 			let choice = +t.kind.value;
@@ -130,7 +144,7 @@
 			}
 			qualityTr.removeAttribute("hidden");
 			locationsDiv.style.display = "";
-			//등장 장소도 위에 처럼
+			
 			if(choice == 1)return;
 			cooltimeTr.removeAttribute("hidden");
 		}
@@ -157,6 +171,9 @@
 			if(effectCheck)return '효과를 입력해주세요';
 			t.submit();
 		}
+		document.addEventListener("keydown", function(e) {
+			if(e.keyCode == 116)e.preventDefault(); 
+		})
 	</script>
 </body>
 </html>

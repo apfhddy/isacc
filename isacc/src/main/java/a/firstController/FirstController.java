@@ -1,9 +1,11 @@
 package a.firstController;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,17 +31,23 @@ public class FirstController implements AllPath{
 	
 
 	@RequestMapping("/")
-	public String home(HttpServletRequest request) {
-		String key = request.getParameter("key");
+	public String home(HttpServletRequest req) {
+		String key = req.getParameter("key");
 		boolean hiddenPath = key != null && key.equals("admin");
 		if(hiddenPath) {
 			List<Item_KindsDTO> kindList = item_KindsService.getAllKind();
 			List<LocationsDTO> locationsList = locationService.getAllLocations(); 
-			request.setAttribute("kindList", kindList);
-			request.setAttribute("locationsList", locationsList);
+			req.setAttribute("kindList", kindList);
+			req.setAttribute("locationsList", locationsList);
 			return hidden;
 		}
-		else return home; 
+		else {
+			List<Map<String,Object>> itemList = itemsService.getAllItems();
+			String json = JSONArray.toJSONString(itemList);
+			System.out.println(json);
+			req.setAttribute("itemList", json);
+			return home; 
+		}
 	}
 	
 }

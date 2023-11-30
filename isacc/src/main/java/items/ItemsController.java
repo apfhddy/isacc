@@ -55,4 +55,10 @@ public class ItemsController implements AllPath{
 		
 		return "/?key=admin";
 	}
+	
+	@RequestMapping("updateItem")
+	public String updateItem() {
+		return "";
+	}
+	
 }
