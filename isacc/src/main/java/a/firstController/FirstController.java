@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -47,6 +48,19 @@ public class FirstController implements AllPath{
 			req.setAttribute("itemList", json);
 			return home; 
 		}
+	}
+	
+	@RequestMapping("updateForm")
+	public String updateForm(HttpServletRequest req) {
+		List<Item_KindsDTO> kindList = item_KindsService.getAllKind();
+		List<LocationsDTO> locationsList = locationService.getAllLocations(); 
+		req.setAttribute("kindList", kindList);
+		req.setAttribute("locationsList", locationsList);
+		
+		int item_no = Integer.parseInt(req.getParameter("key"));
+		Map<String,Object> itemMap = itemsService.getOneItem(item_no);
+		req.setAttribute("itemMap", JSONObject.toJSONString(itemMap));
+		return hidden;
 	}
 	
 }

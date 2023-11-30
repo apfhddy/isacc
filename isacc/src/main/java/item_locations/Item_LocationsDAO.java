@@ -19,4 +19,8 @@ public class Item_LocationsDAO {
 	public	List<Map<String,Object>> getOneLocations(int item_no){
 		return sqlSession.selectList("item_locations.getOneLocations", item_no);
 	}
+	
+	public int deleteOneLocations(int no) {
+		return sqlSession.delete("item_locations.deleteOneLocations",no);
+	}
 }

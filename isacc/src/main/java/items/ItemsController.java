@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import a.controllerPath.AllPath;
+import item_kinds.Item_KindsDTO;
+import locations.LocationsDTO;
 
 @Controller
 public class ItemsController implements AllPath{
@@ -67,13 +69,13 @@ public class ItemsController implements AllPath{
 		m.addAttribute("itemList", json);
 		return updateHome;
 	}
-
-	@RequestMapping("updateForm")
-	public String updateForm(HttpServletRequest req) {
-		int item_no = Integer.parseInt(req.getParameter("key"));
-		Map<String,Object> itemMap = itemsService.getOneItem(item_no);
-		req.setAttribute("itemMap", itemMap);
-		return hidden;
+	
+	@RequestMapping("updateData")
+	public String updateData(HttpServletRequest req) {
+		itemsService.updateData(req);
+		return "updateItem";
 	}
+
+	
 	
 }

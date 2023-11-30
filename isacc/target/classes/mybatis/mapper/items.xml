@@ -17,6 +17,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getOneItem" parameterType="int" resultType="map">
 		select * from items where item_no = #{no}	
 	</select>
+	<update id="updateData" parameterType="items.ItemsDTO">
+		update items set 
+			kind_no = #{kind_no}, 
+			image = #{image}, 
+			id = #{id},
+			kr_name = #{kr_name},
+			en_name = #{en_name},
+			kr_line = #{kr_line},
+			en_line = #{en_line},
+			unlock = #{unlock},
+			effect = #{effect},
+			quality = #{quality},
+			i_c_no = #{i_c_no},
+			goldaccessories = #{goldaccessories}
+		where item_no = #{item_no}
+	</update>
 </mapper>
 
 

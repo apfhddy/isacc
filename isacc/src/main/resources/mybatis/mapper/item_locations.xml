@@ -7,13 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertItem_Locations" parameterType="item_locations.Item_LocationsDTO">
 		insert into item_locations values(item_locations_seq.nextval,#{item_no},#{location_no})
 	</insert>
+	
 	<select id="getOneLocations" resultType="map" parameterType="int">
-		select name,image from item_locations il 
+		select l.location_no,name,image from item_locations il 
 			inner join locations l
 			on il.location_no = l.location_no
 			where item_no = #{item_no} 
 			order by l.location_no
 	</select>
+	
+	<delete id="deleteOneLocations" parameterType="int">
+		delete item_locations where item_no = #{no}
+	</delete>
 </mapper>
 
 

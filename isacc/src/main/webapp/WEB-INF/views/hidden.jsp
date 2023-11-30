@@ -28,7 +28,7 @@
 				<table border="1">
 					<tr>
 						<%for(int i = 0 ; i < locatoins.size(); i++){
-							%><td><img src="resources/roomImg/<%=locatoins.get(i).getImage()%>"><input name = "locations" type = "checkbox" value="<%=locatoins.get(i).getLocation_no()%>"></td><%
+							%><td><img src="resources/roomImg/<%=locatoins.get(i).getImage()%>"><input name = "locations" type = "checkbox"  value="<%=locatoins.get(i).getLocation_no()%>"></td><%
 							if((i+1) % 3 == 0){
 								%></tr><tr><% 
 							}
@@ -98,7 +98,7 @@
 					<td>언락 조건</td>
 					<td colspan="2"><textarea name = "unlock" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
-				<tr>
+				<tr> 	
 					<td>효과*</td>	
 					<td colspan="2"><textarea name = "effect" spellcheck="false" rows="5" cols="40" ></textarea></td>
 				</tr>
@@ -107,12 +107,52 @@
 					<td colspan="2"><textarea name="goldaccessories" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 			</table>
-			<input type="button" value="저장" onclick="checkSubmit(this.form)"><input type = "button" value = "아이템 수정" onclick="document.location.href='${pageContext.request.contextPath}/updateItem'">
+			<input type="button" value="저장" onclick="checkSubmit(this.form)">
+			<c:choose >
+				<c:when test="${itemMap == null }">
+					<input type = "button" value = "아이템 수정" onclick="document.location.href='${pageContext.request.contextPath}/updateItem'">				
+				</c:when>
+				<c:otherwise>
+					<input type = "submit" value = "삭제">				
+				</c:otherwise>
+			</c:choose>
 		</form>
 	</div>
 	<script type="text/javascript">
+		const mainForm = document.querySelector("form");
+	
+		let updateItem = ${itemMap != null ? itemMap : 'null'};
+		if(updateItem != null){
+			const locationsList = Array.from(mainForm.locations)
+			
+			const hidden1 = document.createElement("input");
+			hidden1.setAttribute("name", "key")
+			hidden1.setAttribute("type", "hidden")
+			hidden1.setAttribute("value", updateItem["ITEM_NO"])
+			mainForm.appendChild(hidden1);
+			const hidden2 = document.createElement("input");
+			hidden2.setAttribute("name", "file")
+			hidden2.setAttribute("type", "hidden")
+			hidden2.setAttribute("value", updateItem["IMAGE"])
+			mainForm.appendChild(hidden2);
+			
+			updateItem["LOCATIONS"].forEach( l => {
+				locationsList[(l["LOCATION_NO"]-1)].checked = true;
+			})
+			mainForm.kind.children[(updateItem["KIND_NO"]-1)].selected = true;
+			mainForm.id.value = updateItem["ID"]
+			mainForm.kr_name.value = updateItem["KR_NAME"]
+			mainForm.en_name.value = updateItem["EN_NAME"]
+			mainForm.kr_line.value = updateItem["KR_LINE"]
+			mainForm.en_line.value = updateItem["EN_LINE"]
+			mainForm.quality.children[updateItem["QUALITY"]].selected = true;
+			mainForm.unlock.innerText = updateItem["UNLOCK"] == null ? "" : updateItem["UNLOCK"];
+			mainForm.effect.value = updateItem["EFFECT"] == null ? "" : updateItem["EFFECT"];
+		}
+		
+		//모든 텍스트에어리아에 tap기능 추가
 		let textObjects = Array.from(document.querySelectorAll("textarea"));
-		textObjects.forEach(t => {
+		textObjects.forEach(t => { 
 			t.addEventListener("keydown", function(e) {
 				if(event.keyCode===9){
 					e.preventDefault();
@@ -124,8 +164,7 @@
 			})
 		})
 		
-	
-		inputDataChange(document.querySelector("form"))
+		//종류에 따라 입력에 차이
 		function inputDataChange(t) {
 			let choice = +t.kind.value;
 			const qualityTr = t.quality.parentElement.parentElement;
@@ -149,6 +188,7 @@
 			cooltimeTr.removeAttribute("hidden");
 		}
 		
+		//에러메세지 함수
 		function checkSubmit(t) {
 			let str = errMessage(t);
 			if(str != undefined)alert(str);
@@ -162,18 +202,27 @@
 			const en_lineCheck = t.en_line.value == "";
 			const effectCheck = t.effect.value == "";
 			
-			if(imageCheck)return '이미지를 등록해주세요';
+			//if(imageCheck)return '이미지를 등록해주세요';
 			if(idCheck)return '아이디를 올바르게 입력해주세요';
 			if(kr_nameCheck)return '한글이름을 입력해주세요';
 			if(en_nameCheck)return '영어이름을 입력해주세요';
 			if(kr_lineCheck)return '한글 습득 대사를 입력해주세요';
 			if(en_lineCheck)return '영어 습득 대사를 입력해주세요';
 			if(effectCheck)return '효과를 입력해주세요';
+			
+			if(updateItem != null){
+				t.action = "${pageContext.request.contextPath }/updateData"
+			}
 			t.submit();
 		}
+		//새로고침 막기
 		document.addEventListener("keydown", function(e) {
 			if(e.keyCode == 116)e.preventDefault(); 
 		})
+		
+		
+		
+		inputDataChange(mainForm)
 	</script>
 </body>
 </html>

@@ -27,4 +27,8 @@ public class ItemsDAO {
 	public Map<String,Object> getOneItem(int no){
 		return sqlSession.selectOne("items.getOneItem",no);
 	}
+	
+	public int updateData(ItemsDTO dto) {
+		return sqlSession.update("items.updateData",dto);
+	}
 }
