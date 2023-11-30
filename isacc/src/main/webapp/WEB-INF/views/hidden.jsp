@@ -107,7 +107,7 @@
 					<td colspan="2"><textarea name="goldaccessories" spellcheck="false" rows="5" cols="40"></textarea></td>
 				</tr>
 			</table>
-			<input type="button" value="저장" onclick="checkSubmit(this.form)"><input type = "button" value = "아이템 수정" onclick="document.location.href='${pageContext.request.contextPath}/'">
+			<input type="button" value="저장" onclick="checkSubmit(this.form)"><input type = "button" value = "아이템 수정" onclick="document.location.href='${pageContext.request.contextPath}/updateItem'">
 		</form>
 	</div>
 	<script type="text/javascript">

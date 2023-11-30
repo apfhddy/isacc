@@ -93,6 +93,11 @@
 		let img = document.createElement("img");
 		img.setAttribute("src", "resources/itemImg/"+i["IMAGE"]);
 		img.setAttribute("data-token", i["ID"]);
+		
+		img.addEventListener("click", function(e) {
+			document.location.href='updateForm?key='+items[this.getAttribute("data-token")-1]["ITEM_NO"]
+		});
+		
 		item.appendChild(img);
 	})
 	document.addEventListener("mousemove", function(e) {
@@ -129,6 +134,7 @@
 			})
 		}
 	})
+	
 	
 </script>
 </body>

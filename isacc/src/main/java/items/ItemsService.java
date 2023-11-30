@@ -74,42 +74,28 @@ public class ItemsService {
 	}
 	
 	public List<Map<String,Object>> getAllItems(){
-		List<ItemsDTO> list = itemsDAO.getAllItems();
 		
-		List<Map<String,Object>> returnMap = new ArrayList<Map<String,Object>>();
-		for(ItemsDTO item : list) {
-			Map<String,Object> sideMap = new HashMap<String, Object>();
-			int kind = item.getKind_no();
-			int item_no = item.getItem_no();
-			sideMap.put("item_no", item_no);
-			sideMap.put("kind_no", kind);
-			sideMap.put("image", item.getImage());	
-			sideMap.put("id", item.getId());
-			sideMap.put("kr_name", item.getKr_name());
-			sideMap.put("en_name", item.getEn_name());
-			sideMap.put("kr_line", item.getKr_line());
-			sideMap.put("en_line", item.getEn_line());
-			sideMap.put("unlock", item.getUnlock());
-			sideMap.put("effect", item.getEffect());
-			sideMap.put("quality", item.getQuality());
+		List<Map<String,Object>> returnMap = itemsDAO.getAllItems();
+		for(Map<String,Object> item : returnMap) {
+			int kind = StaticMethod.mybatisMapObjectToInt(item.get("KIND_NO"));
 			if(kind != 3) {//3이 아니라면 
-				List<Map<String,Object>> locations = item_LocationsDAO.getOneLocations(item_no);
-				sideMap.put("locations", locations);
+				List<Map<String,Object>> locations = item_LocationsDAO.getOneLocations(StaticMethod.mybatisMapObjectToInt(item.get("ITEM_NO")));
+				item.put("LOCATIONS", locations);
 			}
-			if(kind == 2) {
-				sideMap.put("i_c_no", item.getI_c_no());
+			if(kind == 2) {//쿨타임 설정 테이블 참조
 			}
-			if(kind == 3) {
-				sideMap.put("goldaccessories", item.getGoldaccessories());
-			}
-			returnMap.add(sideMap);
 		}
-		
-		
-		
-		
+		System.out.println(returnMap.toString());
 		return returnMap;
 	}
 	
-	
+	public Map<String,Object> getOneItem(int no){
+		Map<String,Object> returnMap = itemsDAO.getOneItem(no);
+		int kind = StaticMethod.mybatisMapObjectToInt(returnMap.get("KIND_NO"));
+		if(kind != 3) {//3이 아니라면 
+			List<Map<String,Object>> locations = item_LocationsDAO.getOneLocations(StaticMethod.mybatisMapObjectToInt(returnMap.get("ITEM_NO")));
+			returnMap.put("LOCATIONS", locations);
+		}
+		return returnMap;
+	}
 }

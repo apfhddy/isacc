@@ -44,7 +44,6 @@ public class FirstController implements AllPath{
 		else {
 			List<Map<String,Object>> itemList = itemsService.getAllItems();
 			String json = JSONArray.toJSONString(itemList);
-			System.out.println(json);
 			req.setAttribute("itemList", json);
 			return home; 
 		}

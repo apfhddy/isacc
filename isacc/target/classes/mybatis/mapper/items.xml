@@ -11,8 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getNextNo" resultType="int">
 		select items_seq.nextval from dual
 	</select>
-	<select id="getAllItems" resultType="items.ItemsDTO">
+	<select id="getAllItems" resultType="map">
 		select * from items order by id
+	</select>
+	<select id="getOneItem" parameterType="int" resultType="map">
+		select * from items where item_no = #{no}	
 	</select>
 </mapper>
 

@@ -1,6 +1,7 @@
 package items;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -19,7 +20,11 @@ public class ItemsDAO {
 		return sqlSession.selectOne("items.getNextNo");
 	}
 	
-	public List<ItemsDTO> getAllItems(){
+	public List<Map<String,Object>> getAllItems(){
 		return sqlSession.selectList("items.getAllItems");
+	}
+	
+	public Map<String,Object> getOneItem(int no){
+		return sqlSession.selectOne("items.getOneItem",no);
 	}
 }

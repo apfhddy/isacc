@@ -28,4 +28,8 @@ public class StaticMethod {
 		}
 		return changeText.toString();
 	}
+	
+	public static int mybatisMapObjectToInt(Object ObjInt) {
+		return Integer.parseInt(String.valueOf(ObjInt));
+	}
 }
