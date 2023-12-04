@@ -33,6 +33,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			goldaccessories = #{goldaccessories}
 		where item_no = #{item_no}
 	</update>
+	<delete id="deleteItem" parameterType="int">
+		delete items where item_no = #{no}
+	</delete>
 </mapper>
 
 

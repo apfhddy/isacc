@@ -113,7 +113,7 @@
 					<input type = "button" value = "아이템 수정" onclick="document.location.href='${pageContext.request.contextPath}/updateItem'">				
 				</c:when>
 				<c:otherwise>
-					<input type = "submit" value = "삭제">				
+					<input type = "button" value = "삭제" onclick="this.form.action = '${pageContext.request.contextPath}/deleteItem'; this.form.submit()">				
 				</c:otherwise>
 			</c:choose>
 		</form>

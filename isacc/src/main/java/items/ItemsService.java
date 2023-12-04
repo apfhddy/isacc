@@ -31,11 +31,11 @@ public class ItemsService {
 		String en_name = req.getParameter("en_name");
 		String kr_line = req.getParameter("kr_line");
 		String en_line = req.getParameter("en_line");
-		String unlock = StaticMethod.enterTobr(req.getParameter("unlock"));
-		String effect = StaticMethod.enterTobr(req.getParameter("effect"));
+		String unlock = req.getParameter("unlock");
+		String effect = req.getParameter("effect");
 		int quality = Integer.parseInt(req.getParameter("quality"));
 		int i_c_no = 0;
-		String goldaccessories = StaticMethod.enterTobr(req.getParameter("goldaccessories"));
+		String goldaccessories = req.getParameter("goldaccessories");
 		
 		//액티브 쿨타임 처리
 		if(kind_no == 2) {
@@ -46,12 +46,17 @@ public class ItemsService {
 				secondOrspaces = 0;
 			}
 			Item_CoolTimeDTO item_CoolTimeDTO = new Item_CoolTimeDTO(num, secondOrspaces, infinityOroneoff);
-			i_c_no = item_CoolTimeDAO.getItem_CoolTime_NO(item_CoolTimeDTO);
 			
-			if(i_c_no == 0) {
-				i_c_no = item_CoolTimeDAO.getNextNo();
-				item_CoolTimeDTO.setI_c_no(i_c_no);
-				item_CoolTimeDAO.insertCoolTime(item_CoolTimeDTO);
+			boolean cooltimeCreate = num != 0 && infinityOroneoff != 0;
+			if(cooltimeCreate) {
+				i_c_no = item_CoolTimeDAO.getItem_CoolTime_NO(item_CoolTimeDTO);
+				
+				
+				if(i_c_no == 0) {
+					i_c_no = item_CoolTimeDAO.getNextNo();
+					item_CoolTimeDTO.setI_c_no(i_c_no);
+					item_CoolTimeDAO.insertCoolTime(item_CoolTimeDTO);
+				}
 			}
 		}
 		
@@ -92,9 +97,9 @@ public class ItemsService {
 			List<Map<String,Object>> locations = item_LocationsDAO.getOneLocations(StaticMethod.mybatisMapObjectToInt(returnMap.get("ITEM_NO")));
 			returnMap.put("LOCATIONS", locations);
 		}
-		returnMap.put("UNLOCK",StaticMethod.brToenter((String)returnMap.get("UNLOCK")));
-		returnMap.put("EFFECT",StaticMethod.brToenter((String)returnMap.get("EFFECT")));
-		returnMap.put("GOLDACCESSORIES",StaticMethod.brToenter((String)returnMap.get("GOLDACCESSORIES")));
+		returnMap.put("UNLOCK",returnMap.get("UNLOCK"));
+		returnMap.put("EFFECT",returnMap.get("EFFECT"));
+		returnMap.put("GOLDACCESSORIES",returnMap.get("GOLDACCESSORIES"));
 		return returnMap;
 	}
 	
@@ -107,11 +112,11 @@ public class ItemsService {
 		String en_name = req.getParameter("en_name");
 		String kr_line = req.getParameter("kr_line");
 		String en_line = req.getParameter("en_line");
-		String unlock = StaticMethod.enterTobr(req.getParameter("unlock"));
-		String effect = StaticMethod.enterTobr(req.getParameter("effect"));
+		String unlock = req.getParameter("unlock");
+		String effect = req.getParameter("effect");
 		int quality = Integer.parseInt(req.getParameter("quality"));
 		int i_c_no = 0;
-		String goldaccessories = StaticMethod.enterTobr(req.getParameter("goldaccessories"));
+		String goldaccessories = req.getParameter("goldaccessories");
 		//액티브 쿨타임 처리
 		if(kind_no == 2) {
 			int num = StaticMethod.parameterNullCheckToInt0(req.getParameter("num"));
@@ -121,12 +126,17 @@ public class ItemsService {
 				secondOrspaces = 0;
 			}
 			Item_CoolTimeDTO item_CoolTimeDTO = new Item_CoolTimeDTO(num, secondOrspaces, infinityOroneoff);
-			i_c_no = item_CoolTimeDAO.getItem_CoolTime_NO(item_CoolTimeDTO);
-			
-			if(i_c_no == 0) {
-				i_c_no = item_CoolTimeDAO.getNextNo();
-				item_CoolTimeDTO.setI_c_no(i_c_no);
-				item_CoolTimeDAO.insertCoolTime(item_CoolTimeDTO);
+	
+			boolean cooltimeCreate = num != 0 && infinityOroneoff != 0;
+			if(cooltimeCreate) {
+				i_c_no = item_CoolTimeDAO.getItem_CoolTime_NO(item_CoolTimeDTO);
+				
+				
+				if(i_c_no == 0) {
+					i_c_no = item_CoolTimeDAO.getNextNo();
+					item_CoolTimeDTO.setI_c_no(i_c_no);
+					item_CoolTimeDAO.insertCoolTime(item_CoolTimeDTO);
+				}
 			}
 		}
 		
@@ -146,7 +156,10 @@ public class ItemsService {
 		return answer;
 	}
 	
-	
+	public int deleteItem(int no) {
+		item_LocationsDAO.deleteOneLocations(no);
+		return itemsDAO.deleteItem(no);
+	} 
 	
 	
 }

@@ -29,6 +29,10 @@ public class ItemsDAO {
 	}
 	
 	public int updateData(ItemsDTO dto) {
-		return sqlSession.update("items.updateData",dto);
+		return sqlSession.update("items.updateData",dto);	
+	}
+	
+	public int deleteItem(int no) {
+		return sqlSession.delete("items.deleteItem",no);
 	}
 }

@@ -121,12 +121,12 @@
 		id.innerText = oneItem["ID"];
 		
 		line.innerText = oneItem["EN_LINE"]+"("+oneItem["KR_LINE"]+")";
-		
-		unlock.innerHTML = (oneItem["UNLOCK"] == null) ? " - " : oneItem["UNLOCK"];
-		
+				
 		quality.children[oneItem["QUALITY"]].style.backgroundColor = "orange";
+		
+		textUlLi(unlock,oneItem["UNLOCK"]);
 
-		effect.innerHTML = oneItem["EFFECT"]
+		textUlLi(effect,oneItem["EFFECT"] )
 		
 		if(oneItem["LOCATIONS"] != null){
 			oneItem["LOCATIONS"].forEach(l => {
@@ -134,6 +134,47 @@
 			})
 		}
 	})
+	//텍스트들 들여쓰기 적용 시키기
+	function textUlLi(parentNode,text) {
+		parentNode.innerHTML = "";
+		if(text == null){
+			parentNode.innerText = " - ";
+			return;
+		}
+		const mainUl = document.createElement("ul");
+		const texts = text.split("\r\n");
+		let tapFirst = true;
+		let newLi = null;
+		let newUl = null;
+		for(let i = 0; i < texts.length; i++){
+			let checkStr = texts[i].trim()
+			if(checkStr == "" || checkStr == "\t"){
+				let ulAppendCheck = newUl != null && newUl.children.length != 0;
+				if(ulAppendCheck){
+					mainUl.appendChild(newUl);
+				}
+				break;
+			}
+			newLi = document.createElement("li");
+			newLi.innerText = texts[i];
+			if(texts[i].substr(0,1) == "\t"){
+				if(tapFirst){
+					tapFirst = false;
+					newUl = document.createElement("ul");
+				}
+				newUl.appendChild(newLi);
+				if(!tapFirst && i == texts.length -1)
+					mainUl.appendChild(newUl);
+			}else{
+				if(!tapFirst){
+					tapFirst = true;
+					mainUl.appendChild(newUl);
+				}
+				mainUl.appendChild(newLi);
+			}
+		}
+		parentNode.appendChild(mainUl);
+	}
 	
 	
 </script>

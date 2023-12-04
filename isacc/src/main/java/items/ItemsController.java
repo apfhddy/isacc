@@ -75,6 +75,12 @@ public class ItemsController implements AllPath{
 		itemsService.updateData(req);
 		return "updateItem";
 	}
+	
+	@RequestMapping("deleteItem")
+	public String deleteItem(int key) {
+		itemsService.deleteItem(key);
+		return "updateItem";
+	}
 
 	
 	
